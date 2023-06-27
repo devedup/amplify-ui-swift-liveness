@@ -33,6 +33,9 @@ final class VideoChunker {
     }
 
     func start() {
+        guard state != .writing else {
+            return 
+        }
         state = .writing
         assetWriter.startWriting()
         assetWriter.startSession(atSourceTime: .zero)
